@@ -2,7 +2,7 @@
 
 > "Put another way, I started to believe that SDEs can be (or at least, should be) orders of magnitude more productive." -- [Steve Yegge](https://sites.google.com/site/steveyegge2/tin-foil-hats)
 
-aleppo is an *uniform access database*. It persists data on top of Node.js and Redis, and is a core part of [cells](https://github.com/altocodenl/cells).
+aleppo is an *uniform access hierarchical database*. It persists data on top of Node.js and Redis, and is a core part of [cells](https://github.com/altocodenl/cells).
 
 aleppo is highly, highly experimental.
 
@@ -27,7 +27,7 @@ Now, aleppo essentially stores numbers, text and pointers (which are also number
 
 It is possible to use redis' sorted sets to keeping numbers and do all the required queries on them. The big challenge is how to efficiently store and query texts.
 
-aleppo's core implementation idea is to use ngrams not just index but also store strings. Through the use of ngrams, it intends to piggyback compression onto the indexing, and then take advantage of the fact that most texts on a given database are going to look a lot like each other. Since the index is global, it is possible that the compression gains will be more than what could be expected from a compression algorithm using a sliding window.
+aleppo's core implementation idea is to use ngrams not just index but also store texts. Through the use of ngrams, it intends to piggyback compression onto the indexing, and then take advantage of the fact that most texts on a given database are going to look a lot like each other. Since the index is global, it is possible that the compression gains will be more than what could be expected from a compression algorithm using a sliding window.
 
 For the moment, this is absolutely unproven. It is however the approach we're exploring.
 
