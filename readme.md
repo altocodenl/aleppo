@@ -12,7 +12,7 @@ An uhdb has four fundamental concepts:
 
 - All data is indexed: all single queries should take about the same time.
 - All data is stored in nested structures: all data is stored on a single object.
-- There are four types of data: text, number, tlists (objects) and blists (arrays).
+- There are four types of data: text, number, xlists (objects) and blists (arrays).
 - Queries are code and data: queries can be expressed using the same data types; and queries are programs, executed one step at a time.
 
 aleppo intends to have more querying power than a relational database with reasonable performance, while maintaining a hierarchical model (nestedness).
@@ -23,7 +23,7 @@ Note: we use the word *uniform access* instead of *random access* because the fo
 
 Having nested structures in databases (which is something that many NoSQL databases do) has been proven to be possible and practical. The idea of making all the data quickly accessible, however, is quite outrageous and it's still not clear it can be tenable. Indexes are expensive in space and time (processing).
 
-Now, aleppo essentially stores numbers, text and pointers (which are also numbers). Nested structures (tlists and blists) can be represented by access paths which, expressed plainly, are merely a blist of texts and numbers. For example, if your root object is something like `[{name: 'aleppo', year: 2019}]` (the root object being in this case a blist), to access `2019`, the path would be `[0, 'year']`.
+Now, aleppo essentially stores numbers, text and pointers (which are also numbers). Nested structures (xlists and blists) can be represented by access paths which, expressed plainly, are merely a blist of texts and numbers. For example, if your root object is something like `[{name: 'aleppo', year: 2019}]` (the root object being in this case a blist), to access `2019`, the path would be `[0, 'year']`.
 
 It is possible to use redis' sorted sets to keeping numbers and do all the required queries on them. The big challenge is how to efficiently store and query texts.
 
